@@ -172,35 +172,6 @@ app.get("/login", (req, res) => {
     }
   );
 
-  app.get("/register", function (req, res) {
-    adminEmail = "AgileProjectHead@gmail.com";
-    adminUsername = "admin";
-    adminPassword = "admin";
-    Admin.register(
-      new Admin({ email: adminEmail, username: adminUsername }),
-      adminPassword,
-      function (err, user) {
-        if (err) {
-          res.json({
-            success: false,
-            message: "Your account could not be saved. Error: " + err,
-          });
-        } else {
-          req.login(user, (er) => {
-            if (er) {
-              res.json({ success: false, message: er });
-            } else {
-              res.json({
-                success: true,
-                message: "Your Admin account has been saved",
-              });
-            }
-          });
-        }
-      }
-    );
-  });
-
 // use env variable to define tcp/ip port with a default
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
