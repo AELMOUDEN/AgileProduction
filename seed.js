@@ -23,6 +23,6 @@ productsArray.forEach(async function (product) {
     console.log("New Product Saved: " + product);
 });
 
-//Admin.create(admin);
+Admin.create(admin);
 
 console.log("SEEDER END");
