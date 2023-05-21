@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
-const jwt = require("jsonwebtoken");
 const LocalStrategy = require("passport-local");
 const MongoStore = require("connect-mongo");
 const nodemailer = require("nodemailer");
