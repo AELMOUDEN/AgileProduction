@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 const Product = require("./models/product");
 
 // Seeder. Remove when run for the first time
-require("./seed");
+//require("./seed");
 
 const dbURI = process.env.MONGODBURI || "mongodb://127.0.0.1:27017/agileDB";
 const gmailEmail = process.env.GMAILEMAIL || "AgileMailer@gmail.com";
@@ -171,6 +171,35 @@ app.get("/login", (req, res) => {
       res.redirect("/orders");
     }
   );
+
+  app.get("/register", function (req, res) {
+    adminEmail = "AgileProjectHead@gmail.com";
+    adminUsername = "admin";
+    adminPassword = "admin";
+    Admin.register(
+      new Admin({ email: adminEmail, username: adminUsername }),
+      adminPassword,
+      function (err, user) {
+        if (err) {
+          res.json({
+            success: false,
+            message: "Your account could not be saved. Error: " + err,
+          });
+        } else {
+          req.login(user, (er) => {
+            if (er) {
+              res.json({ success: false, message: er });
+            } else {
+              res.json({
+                success: true,
+                message: "Your Admin account has been saved",
+              });
+            }
+          });
+        }
+      }
+    );
+  });
 
 // use env variable to define tcp/ip port with a default
 const PORT = process.env.PORT || 3000;
