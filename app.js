@@ -13,7 +13,7 @@ const nodemailer = require("nodemailer");
 const Product = require("./models/product");
 
 // Seeder. Remove when run for the first time
-//require("./seed");
+require("./seed");
 
 const dbURI = process.env.MONGODBURI || "mongodb://127.0.0.1:27017/agileDB";
 const gmailEmail = process.env.GMAILEMAIL || "AgileMailer@gmail.com";
